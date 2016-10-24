@@ -5,10 +5,106 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <!-- Connect to Bootstrap CSS -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <!-- Connect to Font Awesome CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<hr>
+  <div class="container-fluid">
+
+      <div class="row" style="padding:0px 0px 0px 0px;">
+        <div class="col-sm-12"></div>
+      </div>
+
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-2">
+        <a href="/rock" class="btn btn-primary btn-lg btn-block" role="button">Play Rock</a>
+      </div>
+      <div class="col-sm-2">
+        <a href="/paper" class="btn btn-info btn-lg active btn-lg btn-block" role="button">Play Paper</a>
+      </div>
+      <div class="col-sm-2">
+        <a href="/scissors" class="btn btn-primary btn-lg active btn-lg btn-block" role="button">Play Scissors</a>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12" style="padding:50px 10000px 15px 0px;"></div>
+    </div>
+
+<div class="row">
+    <table class="table table-condense">
+      <thead>
+      <tr>
+        <th style="width:25%;"></th>
+        <td class="success"><%= @user_move %></td>
+        <td class="danger"><%= @computer_move %></td>
+        <th style="width:25%;"></th>
+      </tr>
+    </thead>
+
+</div>
+<!-- </div> -->
+
+<!-- <div class="container"> -->
+    <div class="row">
+      <div class="col-sm-3"></div>
+
+      <div class="col-sm-3">
+        <% if @user_move.downcase == "rock"%>
+        <img src="http://localhost:3000/assets/images/rock.png" height="300"  alt="" class="img-rounded"/>
+        <% elsif @user_move.downcase =="paper"%>
+        <img src="http://localhost:3000/assets/images/paper.png" height="300"  alt="" class="img-rounded"/>
+        <% elsif @user_move.downcase =="scissors"%>
+        <img src="http://localhost:3000/assets/images/scissors.png" height="300"  alt="" class="img-rounded"/>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+        <% if @computer_move.downcase == "rock"%>
+        <img src="http://localhost:3000/assets/images/rock.png" height="300"  alt="" class="img-rounded"/>
+        <% elsif @computer_move.downcase == "paper"%>
+        <img src="http://localhost:3000/assets/images/paper.png" height="300"  alt="" class="img-rounded"/>
+        <% else %>
+        <img src="http://localhost:3000/assets/images/scissors.png" height="300"  alt="" class="img-rounded"/>
+        <% end %>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-12"></div>
+    </div>
+  </table>
+</div>
+
+  <div class="container-fluid" role="main">
+    <div class="padding-inside-top-sm">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+          <% if @final_result == "You tied!"%>
+          <button type="button" class="btn btn-warning btn-lg btn-block"> <strong>You tied!</strong></button>
+          <% elsif @final_result == "You win!"%>
+          <button type="button" class="btn btn-success btn-lg btn-block"><strong>You won!</strong></button>
+          <% else %>
+          <button type="button" class="btn btn-danger btn-lg btn-block"><strong>You lost!</strong></button>
+          <% end %>
+        </div>
+        <div class="col-sm-5"></div>
+      </div>
+    </div>
+  </div>
+
+
 </head>
 <body>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
